@@ -1,0 +1,24 @@
+PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data.
+64 bytes from 1.1.1.1: icmp_req=1 ttl=239 time=148 ms
+64 bytes from 1.1.1.1: icmp_req=2 ttl=239 time=144 ms
+64 bytes from 1.1.1.1: icmp_req=3 ttl=239 time=173 ms
+64 bytes from 1.1.1.1: icmp_req=4 ttl=239 time=145 ms
+
+--- 1.1.1.1 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3006ms
+rtt min/avg/max/mdev = 144.881/153.093/173.743/12.025 ms
+PING 2.2.2.2 (2.2.2.2) 56(84) bytes of data.
+
+--- 2.2.2.2 ping statistics ---
+4 packets transmitted, 0 received, 100% packet loss, time 3000ms
+
+PING 3.3.3.3 (3.3.3.3) 56(84) bytes of data.
+
+--- 3.3.3.3 ping statistics ---
+4 packets transmitted, 0 received, 100% packet loss, time 3003ms
+
+PING 4.4.4.4 (4.4.4.4) 56(84) bytes of data.
+
+--- 4.4.4.4 ping statistics ---
+4 packets transmitted, 0 received, 100% packet loss, time 3000ms
+

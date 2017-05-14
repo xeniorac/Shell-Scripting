@@ -1,0 +1,324 @@
+1. Finds  li ne satrting with 1 (^)  [note; it is for line]
+
+[root@itis grep]# grep -in "^1" testfile*
+
+testfile3.txt:4:1999 is the fun year
+testfile.txt:1:123 Rajesh Shah Director sales 80000
+testfile.txt:2:13 Ramesh Sony MAnager production 60000
+testfile.txt:3:1245 Nilesh Saxena Director Sales 45000
+testfile.txt:4:1678 Niraj Joshi Architect Production 45000
+testfile.txt:8:124 Rajan Gupchup Sr.Director Sales 94000
+testfile.txt:10:190 Ranjan Sohni Director Design 78000
+testfile.txt:11:1778 Nikhil More Sr.VP Sales 95000
+testfile.txt:16:11 Sahu K.K Sr.Manager Support 87000
+[root@itis grep]# 
+
+2. finds line  ending with  letter e
+
+[root@itis grep]# grep -in "e$" testfile*
+
+testfile2.txt:2:arre thou not fatal,sensible or destructive
+testfile2.txt:3:nature seems dead and abusive
+testfile2.txt:8:Can it be riuin or the waste
+[root@itis grep]# 
+
+
+
+3.  Finds all the patterns/words  with 4 zeros [for word]
+
+[root@itis grep]# grep -E "[0]{4}$" testfile.txt or grep -in "[0]\{4\}" testfile*
+
+123 Rajesh Shah Director sales 80000
+13 Ramesh Sony MAnager production 60000
+
+4. Shows all lines starting with alphabet
+
+[root@itis grep]# grep -in "^[a-zA-Z]" testfile*
+
+testfile2.txt:1:when shall we meet? In thunder lightning or in rain?
+testfile2.txt:2:arre thou not fatal,sensible or destructive
+testfile2.txt:3:nature seems dead and abusive
+testfile2.txt:4:Is this a man? or a animal.
+testfile2.txt:5:It moves like a ghost . Will it set earth.
+testfile2.txt:6:The handle looks good.
+testfile2.txt:7:but then the signs are bad
+testfile2.txt:8:Can it be riuin or the waste
+testfile2.txt:9:Are you heat oppressed?
+testfile2.txt:10:And such is an instrumnet iw ant to use.
+testfile2.txt:11:The witchcraft celebrates and curtains sleep
+testfile2.txt:12:you know his whereabout,
+testfile3.txt:1:It is year 1992 and the monday great blues
+testfile3.txt:2:On the 1989 summer it was evolution 
+testfile3.txt:3:some of the years are lucy like 1992 and 1
+ 
+
+5. * show zero or more occurences of previous character
+so results not correct.
+
+[root@itis grep]# grep "ca*" testfile4.txt
+
+cat can cash car ca mat fat boot
+root loot best rest test fets cest cp cd cac
+cot cup cin  <-- this line is undesirable
+[root@itis grep]# 
+
+6. to show lines containing with words starting from ca give caa*
+
+[root@itis grep]# grep -in "caa*" testfile4.txt
+
+1:cat can cash car ca mat fat boot
+2:root loot best rest test fets cest cp cd cac
+[root@itis grep]# 
+
+7. Find the words/pattrens ending with letter a (note not lines)
+
+[root@itis grep]# grep -in "a[[:blank:]]" testfile*
+
+testfile2.txt:4:Is this a man? or a animal.
+testfile2.txt:5:It moves like a ghost . Will it set earth.
+testfile4.txt:1:cat can cash car ca mat fat boot
+testfile.txt:3:1245 Nilesh Saxena Director Sales 45000
+testfile.txt:5:6789 Nitin Vohra Engineer Design 25000
+testfile.txt:7:342 Nikita Desai TechLead Design 49000
+testfile.txt:13:7890 Harshal Mehera Architect Design 44000
+[root@itis grep]# 
+
+8. Find the word/pattern the
+
+[root@itis grep]# grep "The[[:space:]]" testfile*
+
+testfile2.txt:The handle looks good.
+testfile2.txt:The witchcraft celebrates and curtains sleep
+[root@itis grep]# 
+
+
+9. finds the word  satring with c and ending with n and hs only single caharcter in between.
+
+[root@itis grep]# grep -in "c.n" testfile4.txt
+
+1:cat can cash car ca mat fat boot
+3:cot cup cin
+[root@itis grep]# 
+
+
+10.find the patterns with punctuation charaters like - ,.?!
+
+[root@itis grep]# grep "[[:punct:]]" testfile*
+
+testfile2.txt:when shall we meet? In thunder lightning or in rain?
+testfile2.txt:arre thou not fatal,sensible or destructive
+testfile2.txt:Is this a man? or a animal.
+testfile2.txt:It moves like a ghost . Will it set earth.
+testfile2.txt:The handle looks good.
+testfile2.txt:Are you heat oppressed?
+testfile2.txt:And such is an instrumnet iw ant to use.
+testfile2.txt:you know his whereabout,
+testfile3.txt:some of the years are lucy like 1992 and 1
+tfile.txt:2456 Ravi K. Engineer Design 34000
+testfile.txt:124 Rajan Gupchup Sr.Director Sales 94000
+testfile.txt:567 Vaishli Ranade Sr.Engineer Production 34000
+testfile.txt:1778 Nikhil More Sr.VP Sales 95000
+testfile.txt:8900 Nayan R. director Marketing 67000
+testfile.txt:11 Sahu K.K Sr.Manager Support 87000
+
+
+11. find the line containing only single word moon
+
+[root@itis grep]# grep -in "^moon$" testfile*
+
+testfile4.txt:4:moon
+[root@itis grep]# 
+
+
+12.  Find fourdigit number pattrens
+
+[root@itis grep]# grep -in "[0-9]\{4\}[[:space:]]" testfile*
+
+testfile3.txt:1:It is year 1992 and the monday great blues
+testfile3.txt:2:On the 1989 summer it was evolution 
+testfile3.txt:3:some of the years are lucy like 1992 and tfile3.txt:4:1999 is the fun year
+testfile.txt:3:1245 Nilesh Saxena Director Sales 45000
+testfile.txt:4:1678 Niraj Joshi Architect Production 45000
+testfile.txt:5:6789 Nitin Vohra Engineer Design 25000
+testfile.txt:6:2456 Ravi K. Engineer Design 34000
+testfile.txt:11:1778 Nikhil More Sr.VP Sales 95000
+testfile.txt:12:4567 Nidhip Gore Director Production 87000
+testfile.txt:13:7890 Harshal Mehera Architect Design 44000
+testfile.txt:14:2345 Nikhilesh Bhave director support 78945
+testfile.txt:15:8900 Nayan R. director Marketing 67000
+[root@itis grep]# 
+
+13. to search multiple patterns using -E -extended regular expression
+
+[root@itis grep]# grep -E "good|food" testfile*
+
+testfile2.txt:The handle looks good.
+testfile4.txt:food mood
+[root@itis grep]# 
+
+14. + searches one or more occurence of the pattern
+
+[root@itis grep]# grep -E "go+" testfile*
+
+testfile2.txt:The handle looks good.
+testfile4.txt:got pot knot
+[root@itis grep]# 
+
+15.ere to match first few characters of word
+
+[root@itis grep]# grep -E "(can|cam)bus" testfile*
+
+testfile3.txt:cambus architecture
+testfile4.txt:canbus architecture
+[root@itis grep]# 
+
+__________________________________________________________________
+
+Other commands
+
+1. tr command 
+[root@itis grep]# echo hello world | tr 'a-z' 'A-Z'
+HELLO WORLD
+
+2. [root@itis grep]# tr ' ' '-' <trtest
+this-is-test-file
+[root@itis grep]# cat trtest
+this is test file
+[root@itis grep]# 
+
+Note: original file does not change
+
+3. to change original file
+[root@itis grep]# tr ' ' '-' <trtest >trout
+[root@itis grep]# cat trout
+this-is-test-file
+[root@itis grep]# 
+
+
+4.  cut command Note:original files do not change
+
+[root@itis grep]# cut -d ":" -f1
+root
+bin
+daemon
+adm
+lp
+sync
+shutdown
+halt
+mail
+
+
+5. [root@itis grep]# cut -d " " -f 1 testfile.txt
+123
+13
+1245
+1678
+6789
+2456
+342
+124
+567
+190
+1778
+4567
+7890
+2345
+8900
+11
+[root@itis grep]# 
+
+Note: default delimiter is tab for cut
+
+
+6. cut by columns range
+[root@itis grep]# cut -c 1,2 testfile.txt
+12
+13
+12
+16
+67
+24
+34
+12
+56
+19
+17
+45
+78
+23
+89
+11
+[root@itis grep]# 
+
+7. Sort command 
+Sorts by default with ascii collating sequence -white space first, then numbers then ,upper,loer etc.
+
+[root@itis grep]# ls |sort 
+commands
+testfile2.txt
+testfile3.txt
+testfile4.txt
+testfile.txt
+trout
+trtest
+[root@itis grep]# 
+
+8.[root@itis grep]# cut -d ":" -f1 /etc/passwd |sort
+adm
+apache
+avahi
+avahi-autoipd
+bin
+daemon
+dbus
+distcache
+ftp
+games
+gdm
+gopher
+haldaemon
+halt
+l2it
+lp
+mail
+
+9.sort by field
+-t is field separator
+-k is field no.
+
+[root@itis grep]# sort -t " " -k 6 testfile.txt
+6789 Nitin Vohra Engineer Design 25000
+2456 Ravi K. Engineer Design 34000
+567 Vaishli Ranade Sr.Engineer Production 34000
+7890 Harshal Mehera Architect Design 44000
+1245 Nilesh Saxena Director Sales 45000
+1678 Niraj Joshi Architect Production 45000
+342 Nikita Desai TechLead Design 49000
+13 Ramesh Sony MAnager production 60000
+8900 Nayan R. director Marketing 67000
+190 Ranjan Sohni Director Design 78000
+2345 Nikhilesh Bhave director support 78945
+123 Rajesh Shah Director sales 80000
+11 Sahu K.K Sr.Manager Support 87000
+4567 Nidhip Gore Director Production 87000
+124 Rajan Gupchup Sr.Director Sales 94000
+1778 Nikhil More Sr.VP Sales 95000
+[root@itis grep]# 
+
+
+10. reverse sort  sort -r
+
+[root@itis grep]# sort -r sortfile 
+zac 
+samy 
+ruby
+cox
+betty
+ann
+
+Note: original file dowes not change oput can be sent using -o <fname> option
+
+
+
+
