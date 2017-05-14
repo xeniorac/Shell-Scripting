@@ -1,0 +1,43 @@
+Jan 12 12:00:54 itis shutdown[3164]: shutting down for system halt
+Jan 12 12:00:57 itis smartd[3141]: smartd received signal 15: Terminated 
+Jan 12 12:00:57 itis smartd[3141]: smartd is exiting (exit status 0) 
+Jan 12 12:00:57 itis avahi-daemon[3079]: Got SIGTERM, quitting.
+Jan 12 12:01:00 itis xinetd[2985]: Exiting...
+Jan 12 12:01:04 itis hcid[2778]: Got disconnected from the system message bus
+Jan 12 12:01:04 itis nm-system-settings: disconnected from the system bus, exiting.
+Jan 12 12:01:05 itis rpc.statd[2659]: Caught signal 15, un-registering and exiting.
+Jan 12 12:01:06 itis restorecond: terminated
+Jan 12 12:01:06 itis auditd[2576]: The audit daemon is exiting.
+Jan 12 12:01:06 itis kernel:  In My timer function<7>Sample_Driver: mychar: Initialising timer<5>audit(1231741866.690:603): audit_pid=0 old=2576 by auid=4294967295 subj=system_u:system_r:auditd_t:s0
+Jan 12 12:01:07 itis pcscd: pcscdaemon.c:572:signal_trap() Preparing for suicide
+Jan 12 12:01:07 itis pcscd: hotplug_libusb.c:376:HPRescanUsbBus() Hotplug stopped
+Jan 12 12:01:08 itis pcscd: readerfactory.c:1379:RFCleanupReaders() entering cleaning function
+Jan 12 12:01:08 itis pcscd: pcscdaemon.c:532:at_exit() cleaning /var/run
+Jan 12 12:01:08 itis kernel: Kernel logging (proc) stopped.
+Jan 12 12:01:08 itis kernel: Kernel log daemon terminating.
+Jan 12 12:01:09 itis exiting on signal 15
+Jan 12 21:52:41 itis syslogd 1.4.1: restart.
+Jan 13 03:49:05 itis shutdown[6731]: shutting down for system halt
+Jan 13 03:49:05 itis gconfd (root-3406): Received signal 15, shutting down cleanly
+Jan 13 03:49:05 itis gconfd (root-3406): Exiting
+Jan 13 03:49:06 itis restorecond: Will not restore a file with more than one hard link (/etc/resolv.conf) Invalid argument 
+Jan 13 03:49:07 itis smartd[3140]: smartd received signal 15: Terminated 
+Jan 13 03:49:07 itis smartd[3140]: smartd is exiting (exit status 0) 
+Jan 13 03:49:07 itis avahi-daemon[3078]: Got SIGTERM, quitting.
+Jan 13 03:49:07 itis avahi-daemon[3078]: Leaving mDNS multicast group on interface eth0.IPv6 with address fe80::20c:29ff:fe2b:da2e.
+Jan 13 03:49:08 itis avahi-daemon[3078]: Leaving mDNS multicast group on interface eth0.IPv4 with address 192.168.1.101.
+Jan 13 03:49:10 itis xinetd[2984]: Exiting...
+Jan 13 03:49:14 itis nm-system-settings: disconnected from the system bus, exiting.
+Jan 13 03:49:14 itis hcid[2779]: Got disconnected from the system message bus
+Jan 13 03:49:14 itis rpc.statd[2660]: Caught signal 15, un-registering and exiting.
+Jan 13 03:49:15 itis restorecond: terminated
+Jan 13 03:49:16 itis auditd[2577]: The audit daemon is exiting.
+Jan 13 03:49:16 itis kernel:  In My timer function<2>Sample_Driver: mychar: Initialising timer<5>audit(1231798756.170:2193): audit_pid=0 old=2577 by auid=4294967295 subj=system_u:system_r:auditd_t:s0
+Jan 13 03:49:16 itis pcscd: pcscdaemon.c:572:signal_trap() Preparing for suicide
+Jan 13 03:49:17 itis pcscd: hotplug_libusb.c:376:HPRescanUsbBus() Hotplug stopped
+Jan 13 03:49:17 itis pcscd: readerfactory.c:1379:RFCleanupReaders() entering cleaning function
+Jan 13 03:49:17 itis pcscd: pcscdaemon.c:532:at_exit() cleaning /var/run
+Jan 13 03:49:17 itis kernel: Kernel logging (proc) stopped.
+Jan 13 03:49:17 itis kernel: Kernel log daemon terminating.
+Jan 13 03:49:18 itis exiting on signal 15
+Jan 13 14:24:12 itis syslogd 1.4.1: restart.

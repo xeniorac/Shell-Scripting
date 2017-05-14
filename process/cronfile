@@ -1,0 +1,1 @@
+15 15 * * * echo "good morning">/dev/pts/1 

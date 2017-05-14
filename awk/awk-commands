@@ -1,0 +1,142 @@
+1. /*  Prints all directors in file */
+
+$awk '/[Dd]irector/' dstfile
+
+123 Rajesh Shah Director sales 80000
+1245 Nilesh Saxena Director Sales 45000
+124 Rajan Gupchup Sr.Director Sales 94000
+190 Ranjan Sohni Director Design 78000
+4567 Nidhip Gore Director Production 87000
+2345 Nikhilesh Bhave director support 78945
+8900 Nayan R. director Marketing 67000
+
+2. /* prints no of directors */
+awk 'BEGIN {nlines = 0} /[Dd]irector/{nlines++} END {print nlines }' dstfile
+
+7
+
+other variation -
+***************************************************************
+# awk '/[Dd]irector/{nlines++} END {print nlines }' dstfile
+7
+  BEGIN is not necessary 
+
+ Other solution is -
+***************************************************************
+[root@itis awk]# cat dstfile | grep -n "[Dd]irector"
+1:123 Rajesh Shah Director sales 80000
+3:1245 Nilesh Saxena Director Sales 45000
+8:124 Rajan Gupchup Sr.Director Sales 94000
+10:190 Ranjan Sohni Director Design 78000
+12:4567 Nidhip Gore Director Production 87000
+14:2345 Nikhilesh Bhave director support 78945
+15:8900 Nayan R. director Marketing 67000
+[root@itis awk]# cat dstfile | grep -n "[Dd]irector" |wc -l
+7
+
+3. Print number of fields 
+# awk ' END { print NF}' dstfile
+6
+
+
+4. Print all the directors with salary > 70000
+
+[root@itis awk]# awk '/[Dd]irector/ && $6 > 70000 ' dstfile
+123 Rajesh Shah Director sales 80000
+124 Rajan Gupchup Sr.Director Sales 94000
+190 Ranjan Sohni Director Design 78000
+4567 Nidhip Gore Director Production 87000
+2345 Nikhilesh Bhave director support 78945
+
+5. Prints all the fileds of director and adds the count filed in the end
+
+awk '/[Dd]irector/ && $6 > 70000 {count++; print $0, count}' dstfile
+123 Rajesh Shah Director sales 80000 1
+124 Rajan Gupchup Sr.Director Sales 94000 2
+190 Ranjan Sohni Director Design 78000 3
+4567 Nidhip Gore Director Production 87000 4
+2345 Nikhilesh Bhave director support 78945 5
+
+6. Adds Title - Salary report and footer - All figures in Rs
+Calculates Annual salary of all sales department
+
+# awk ' BEGIN { printf "\t SALARY  REPORT\nual_sal=$6*12; printf "%10s %10s %d %d \n", $2, $3, $6, annual_sal} END { printf "\n All figures in Rs \n"}' dstfile
+         SALARY  REPORT
+     Rajesh       Shah 80000 960000 
+    Nilesh     Saxena 45000 540000 
+     Rajan    Gupchup 94000 1128000 
+    Nikhil       More 95000 1140000 
+
+ All figures in Rs 
+
+7. sort the field s alphabetically
+ 
+awk '{print $2, $3  | "sort " }' dstfile
+
+Harshal Mehera
+Nayan R.
+Nidhip Gore
+Nikhilesh Bhave
+Nikhil More
+Nikita Desai
+Nilesh Saxena
+Niraj Joshi
+Nitin Vohra
+Rajan Gupchup
+Rajesh Shah
+Ramesh Sony
+Ranjan Sohni
+Ravi K.
+Vaishli Ranade
+
+8. Prints the who all are logged in -
+
+[root@itis awk]# who | awk '{print $1}'
+root
+root
+root
+root
+[root@itis awk]# who | awk '{print $1}'|uniq
+root
+[root@itis awk]# who | awk '{print $1}'| sort
+root
+root
+root
+root
+[root@itis awk]# who | awk '{print $1}'| sort |wc -l
+4
+
+
+9. /* Different field sperator */
+# awk -F "," '{print$2, $3 }' out.txt
+Rajesh Shah
+Ramesh Sony
+Nilesh Saxena
+Niraj Joshi
+Nitin Vohra
+Ravi K.
+Nikita Desai
+Rajan Gupchup
+Vaishli Ranade
+Ranjan Sohni
+Nikhil More
+Nidhip Gore
+Harshal Mehera
+Nikhilesh Bhave
+Nayan R.
+
+
+10.  Compares the fileds with regular expression
+     Also can check multiple conditions
+ 
+[root@itis awk]# awk '$5 ~/[Ss]ales/ || $5 ~/[Aa]ccounts/ {print} ' *.txt
+123 Rajesh Shah Director sales 80000
+1245 Nilesh Saxena Director Sales 45000
+124 Rajan Gupchup Sr.Director Sales 94000
+1778 Nikhil More Sr.VP Sales 95000
+123    Rajesh Shah  Director sales 80000
+1245  Nilesh Saxena Director Sales 45000
+124 Rajan Gupchup Sr.Director Sales 94000
+1778 Nikhil More Sr.VP Sales 95000
+[root@itis awk]# 
+

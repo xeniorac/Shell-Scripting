@@ -1,0 +1,12 @@
+[root@itis process]# crontab cronfile 
+[root@itis process]# crontab -l
+30 9 * * * echo "good morning"> &2
+[root@itis process]# crontab -e <- open in vi editor
+crontab: installing new crontab
+[root@itis process]# 
+
+Cronfile format
+min hr dayofmonth month dayofweek cmd
+20  15   10        2      monday   echo "hi">/dev/pts/1
+30  9    *         *      1-6        echo "good morning"
+

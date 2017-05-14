@@ -1,0 +1,37 @@
+1. Find the log generated between 11:20:00 to 11.45:55
+ot@itis sed]# sed -n '/11:2[0-9]:[0-9]\{2\}/,/11:45:[0-9]\{2\}/p' /var/log/messages
+
+Jan 12 11:29:41 itis syslogd 1.4.1: restart.
+Jan 12 11:43:45 itis kernel: Creating proc entry
+Jan 12 11:43:45 itis kernel:  Succesfully added proc entry
+Jan 12 11:44:20 itis kernel:  In open call<7>Sample_Driver: mychar: opened for reading
+Jan 12 11:44:34 itis kernel:  In My timer function<7>Sample_Driver: mychar: Initialising timer<6>
+Jan 12 11:44:41 itis kernel:  In My timer function<7>Sample_Driver: mychar: Initialising timer<6>
+Jan 12 11:44:47 itis kernel:  In My timer function<7>Sample_Driver: mychar: Initialising timer<7>
+Jan 12 11:44:47 itis kernel:  In open call<7>Sample_Driver: mychar: opened for reading
+Jan 12 11:44:48 itis kernel:  In mmap<6>
+Jan 12 11:44:55 itis kernel:  In My timer function<7>Sample_Driver: mychar: Initialising timer<6>
+Jan 12 11:45:30 itis last message repeated 5 times
+
+2. Find the Lines between 2 patterns for e.g start & shutdown
+
+ot@itis sed]# sed -n '/shutdown/,/restart/p' /var/log/messages >> logfile
+
+3.Find  the sylogd on particular day or time
+
+ot@itis sed]# sed -n '/syslogd/p' /var/log/messages | sed -n '/Jan 12/p'
+Jan 12 11:29:41 itis syslogd 1.4.1: restart.
+Jan 12 21:52:41 itis syslogd 1.4.1: restart.
+[root@itis sed]# 
+
+4. Find the log between 2 timings on particular day and which contain particular pattern
+
+
+[root@itis sed]# sed -n '/11:4[0-4]:[0-9]\{2\}/,/11:45:[0-9]\{2\}/p' /var/log/messages  | sed -n '/Jan 12/p' | sed -n '/Sample_Driver/p'
+Jan 12 11:44:20 itis kernel:  In open call<7>Sample_Driver: mychar: opened for reading
+Jan 12 11:44:34 itis kernel:  In My timer function<7>Sample_Driver: mychar: Initialising timer<6>
+Jan 12 11:44:41 itis kernel:  In My timer function<7>Sample_Driver: mychar: Initialising timer<6>
+Jan 12 11:44:47 itis kernel:  In My timer function<7>Sample_Driver: mychar: Initialising timer<7>
+Jan 12 11:44:47 itis kernel:  In open call<7>Sample_Driver: mychar: opened for reading
+Jan 12 11:44:55 itis kernel:  In My timer function<7>Sample_Driver: mychar: Initialising timer<6>
+

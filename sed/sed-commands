@@ -1,0 +1,177 @@
+$ sed 's/[Dd]irector/AVP/' testfile3.txt
+123 Rajesh Shah AVP sales 80000
+13 Ramesh Sony MAnager production 60000
+1245 Nilesh Saxena AVP Sales 45000
+6789 Nitin Vohra Engineer Design 25000
+2456 Ravi K. Engineer Design 3400
+342 Nikita Desai TechLead Design 49000
+124 Rajan Gupchup Sr.AVP Sales 94000
+567 Vaishli Ranade Sr.Engineer Production 34000
+190 Ranjan Sohni AVP Design 78000
+1778 Nikhil More Sr.VP Sales 9500
+4567 Nidhip Gore AVP Production 87000
+2345 Nikhilesh Bhave AVP support 78945
+8900 Nayan R. AVP Marketing 67000
+11 Sahu K.K Sr.Manager Support 87000
+
+
+[root@itis sed]# sed 's/^/#/' testfile3.txt
+#123 Rajesh Shah Director sales 80000
+#13 Ramesh Sony MAnager production 60000
+#1245 Nilesh Saxena Director Sales 45000
+#6789 Nitin Vohra Engineer Design 25000
+#2456 Ravi K. Engineer Design 3400
+#342 Nikita Desai TechLead Design 49000
+#124 Rajan Gupchup Sr.Director Sales 94000
+#567 Vaishli Ranade Sr.Engineer Production 34000
+#190 Ranjan Sohni Director Design 78000
+#1778 Nikhil More Sr.VP Sales 9500
+#4567 Nidhip Gore Director Production 87000
+#2345 Nikhilesh Bhave director support 78945
+#8900 Nayan R. director Marketing 67000
+#11 Sahu K.K Sr.Manager Support 87000
+
+[root@itis sed]# sed '4,5s/[Ee]ngineer/Technocrat/' testfile3.txt
+123 Rajesh Shah Director sales 80000
+13 Ramesh Sony MAnager production 60000
+1245 Nilesh Saxena Director Sales 45000
+6789 Nitin Vohra Technocrat Design 25000
+2456 Ravi K. Technocrat Design 3400
+342 Nikita Desai TechLead Design 49000
+124 Rajan Gupchup Sr.Director Sales 94000
+567 Vaishli Ranade Sr.Engineer Production 34000
+190 Ranjan Sohni Director Design 78000
+1778 Nikhil More Sr.VP Sales 9500
+4567 Nidhip Gore Director Production 87000
+2345 Nikhilesh Bhave director support 78945
+8900 Nayan R. director Marketing 67000
+11 Sahu K.K Sr.Manager Support 87000
+
+[root@itis sed]# sed 's/cool/NEW/' substitute.txt 
+test and test and take rest test
+NEW tool fool cool spool kool
+test test test
+rest NEW
+good food NEW tool cool cat
+
+ 
+[root@itis sed]# sed 's/cool/NEW/g' substitute.txt 
+test and test and take rest test
+NEW tool fool NEW spool kool
+test test test
+rest NEW
+good food NEW tool NEW cat
+
+[root@itis sed]# sed 's/^[0-9]*/(&)/' testfile3.txt
+(123) Rajesh Shah Director sales 80000
+(13) Ramesh Sony MAnager production 60000
+(1245) Nilesh Saxena Director Sales 45000
+(6789) Nitin Vohra Engineer Design 25000
+(2456) Ravi K. Engineer Design 3400
+(342) Nikita Desai TechLead Design 49000
+(124) Rajan Gupchup Sr.Director Sales 94000
+(567) Vaishli Ranade Sr.Engineer Production 34000
+(190) Ranjan Sohni Director Design 78000
+(1778) Nikhil More Sr.VP Sales 9500
+(4567) Nidhip Gore Director Production 87000
+(2345) Nikhilesh Bhave director support 78945
+(8900) Nayan R. director Marketing 67000
+(11) Sahu K.K Sr.Manager Support 87000
+[root@itis sed]# 
+
+
+[root@itis sed]# sed 's/Director/Executive &/' testfile3.txt 
+123 Rajesh Shah Executive Director sales 80000
+13 Ramesh Sony MAnager production 60000
+1245 Nilesh Saxena Executive Director Sales 45000
+6789 Nitin Vohra Engineer Design 25000
+2456 Ravi K. Engineer Design 3400
+342 Nikita Desai TechLead Design 49000
+124 Rajan Gupchup Sr.Executive Director Sales 94000
+567 Vaishli Ranade Sr.Engineer Production 34000
+190 Ranjan Sohni Executive Director Design 78000
+1778 Nikhil More Sr.VP Sales 9500
+4567 Nidhip Gore Executive Director Production 87000
+2345 Nikhilesh Bhave director support 78945
+8900 Nayan R. director Marketing 67000
+11 Sahu K.K Sr.Manager Support 87000
+[root@itis sed]# 
+
+[root@itis sed]# ps | sed '1d'
+ 3396 pts/1    00:00:00 bash
+ 3491 pts/1    00:00:00 ps
+ 3492 pts/1    00:00:00 sed
+[root@itis sed]# 
+
+
+[root@itis sed]# sed '/^$/d' substitute.txt 
+test and test and take rest test
+cool tool fool cool spool kool
+test test test
+rest cool
+good food cool tool cool cat
+
+
+ sed -e '/[Dd]irector/d' -e '/AVP/d' testfile3.txt
+13 Ramesh Sony MAnager production 60000
+6789 Nitin Vohra Engineer Design 25000
+2456 Ravi K. Engineer Design 3400
+342 Nikita Desai TechLead Design 49000
+567 Vaishli Ranade Sr.Engineer Production 34000
+1778 Nikhil More Sr.VP Sales 9500
+11 Sahu K.K Sr.Manager Support 87000
+
+
+[root@itis sed]# sed '/[4-9][0-9]\{4\}$/d' testfile3.txt
+6789 Nitin Vohra Engineer Design 25000
+2456 Ravi K. Engineer Design 3400
+567 Vaishli Ranade Sr.Engineer Production 34000
+1778 Nikhil More Sr.VP Sales 9500
+[root@itis sed]# 
+
+
+[root@itis sed]# sed -n '/[Mm]arketing/p'  testfile3.txt 
+8900 Nayan R. director Marketing 67000
+[root@itis sed]# 
+
+
+[root@itis sed]# sed '4i\
+this is test and we can test also what is testing ' a.sh
+# This program is protected under GNU 
+# Copyright L2IT 
+#Illegal copies are not permitted
+this is test and we can test also what is testing 
+
+
+[root@itis sed]# sed '/[Ff]ood/a\
+> Found food ' substitute.txt
+test and test and take rest test
+cool tool fool cool spool kool
+test test test
+
+
+rest cool
+good food cool tool cool cat
+Found food 
+
+food matters most
+Found food 
+[root@itis sed]# 
+
+
+[root@itis sed]# sed -i '1r text' *.sh
+[root@itis sed]# cat a.sh
+   
+/* This Program is protected under GNU license
+* Copyright L2IT 
+* Illegal copies are not permitted */
+#!/bin/bash
+#Sed test
+[root@itis sed]# cat b.sh
+   
+/* This Program is protected under GNU license
+* Copyright L2IT 
+* Illegal copies are not permitted */
+#!/bin/bash
+#Sed test
+
